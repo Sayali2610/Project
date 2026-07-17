@@ -1,0 +1,19 @@
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Marks</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+        <td>{{ student.Name }}</td>
+        <td>{{ student.Age }}</td>
+        <td>{{ student.Marks }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p>Average Marks: {{ average }}</p>
+<p>Highest Marks: {{ highest }}</p>
+<p>Lowest Marks: {{ lowest }}</p>
