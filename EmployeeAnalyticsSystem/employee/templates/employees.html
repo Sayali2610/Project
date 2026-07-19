@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+ <nav>
+     <h2>Employee Analytics System </h2>
+
+     <ul>
+
+         <li><a href="/">Home</a></li>
+         <li><a href="/employees">Employees</a></li>
+         <li><a href="/analytics">Analytics</a></li>
+         <li><a href="/search">Search</a></li>
+         <li><a href="/about">About</a></li>
+     </ul>
+
+     <div class="hero">
+         <h1>Employee Details</h1>
+         <p>
+        Employee records loaded from CSV using
+        <strong>Pandas</strong>.
+    </p>
+
+</div>
+
+<table border="1">
+
+<tr>
+    <th>Employee ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Department</th>
+    <th>Salary</th>
+    <th>Experience</th>
+    <th>City</th>
+</tr>
+
+{% for emp in employees %}
+
+<tr>
+
+    <td>{{ emp.EmployeeID }}</td>
+    <td>{{ emp.Name }}</td>
+    <td>{{ emp.Age }}</td>
+    <td>{{ emp.Department }}</td>
+    <td>₹ {{ emp.Salary }}</td>
+    <td>{{ emp.Experience }} Years</td>
+    <td>{{ emp.City }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+</body>
+</html>

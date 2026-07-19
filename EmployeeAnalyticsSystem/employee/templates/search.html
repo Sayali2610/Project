@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Employee</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<nav>
+    <h2>Employee Analytics System</h2>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/employees/">Employees</a></li>
+        <li><a href="/analytics/">Analytics</a></li>
+        <li><a href="/search/">Search</a></li>
+        <li><a href="/about/">About</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <h1>Search Employee</h1>
+    <p>Search employee by Employee ID or Name.</p>
+</div>
+
+<div class="search-box">
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Enter Employee ID or Name"
+        value="{{ query }}"
+        required>
+
+    <button type="submit" class="btn">Search</button>
+
+</form>
+
+</div>
+
+{% if result %}
+
+<table>
+    <tr>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Experience</th>
+        <th>City</th>
+    </tr>
+
+    {% for emp in result %}
+    <tr>
+        <td>{{ emp.EmployeeID }}</td>
+        <td>{{ emp.Name }}</td>
+        <td>{{ emp.Age }}</td>
+        <td>{{ emp.Department }}</td>
+        <td>{{ emp.Salary }}</td>
+        <td>{{ emp.Experience }}</td>
+        <td>{{ emp.City }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% elif query %}
+
+<h2 style="text-align:center;color:red;">
+    No employee found.
+</h2>
+
+{% endif %}
+
+</body>
+</html>
